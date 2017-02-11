@@ -1,13 +1,7 @@
 require_relative 'card'
 require_relative 'deck'
 
-class Shoe
-  attr_accessor :cards
-
-  def initialize
-    @cards = make_cards.flatten
-    @cards.shuffle!
-  end
+class Shoe < Deck
 
   def make_cards
     deck = []
@@ -15,10 +9,4 @@ class Shoe
     deck
   end
 
-  def draw_card
-    cards.shift
-  end
-
 end
-
-Shoe.new
