@@ -9,13 +9,12 @@ module GameLogic
   end
 
   def check_for_ace(hand)
-    if bust?(hand)
-      ace = player_hand.detect { |card| card.face == "Ace" }
-      ace&.value = 1
-    end
+    ace = hand.detect { |card| card.face == "Ace" }
+    ace&.value = 1
   end
 
   def end_dealer_turn
+    blackjack?(player_hand) ||
     bust?(player_hand) ||
     bust?(dealer_hand) ||
     blackjack?(dealer_hand) ||
@@ -23,7 +22,7 @@ module GameLogic
   end
 
   def end_player_turn
-    bust?(player_hand) || blackjack?(player_hand)
+    blackjack?(dealer_hand) || bust?(player_hand) || blackjack?(player_hand)
   end
 
   def player_has_6_cards?
@@ -31,12 +30,20 @@ module GameLogic
   end
 
   def player_wins?
-    !bust?(player_hand) && (
+    !bust?(player_hand) && not_simultaneous_blackjack &&(
     blackjack?(player_hand) ||
     player_wins_tie? ||
     player_has_6_cards? ||
-    total_hand(player_hand) > total_hand(dealer_hand)
+    total_hand(player_hand) > total_hand(dealer_hand) ||
+    bust?(dealer_hand)
     )
+  end
+
+  def not_simultaneous_blackjack
+    !(player_hand.length == 2 &&
+    dealer_hand.length == 2 &&
+    blackjack?(player_hand) &&
+    blackjack?(dealer_hand))
   end
 
   def player_wins_tie?
