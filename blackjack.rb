@@ -124,4 +124,4 @@ class Game
 
 end
 
-Game.new
+# Game.new
