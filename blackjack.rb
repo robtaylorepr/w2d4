@@ -104,17 +104,17 @@ class Game
   end
 
   def winning_message
-    puts "YOU WON!"
+    puts 'YOU WON!'
     Game.winners_array << "Player"
   end
 
   def losing_message
-    puts "YOU LOST."
+    puts 'YOU LOST.'
     Game.winners_array << "Dealer"
   end
 
   def play_again?
-    response = prompt.select("Would you like to play again?", %w(Yes No))
+    response = prompt.select('Would you like to play again?', %w(Yes No))
     (response == "Yes") ? Game.new.play_blackjack : (puts_game_totals)
   end
 
