@@ -102,12 +102,12 @@ class Game
 
   def winning_message
     puts 'YOU WON!'
-    Game.winners_array << "Player"
+    Game.winners_array << 'Player'
   end
 
   def losing_message
     puts 'YOU LOST.'
-    Game.winners_array << "Dealer"
+    Game.winners_array << 'Dealer'
   end
 
   def play_again?
