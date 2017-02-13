@@ -28,7 +28,7 @@ class Game
   end
 
   def show_hands
-    unless blackjack?(dealer_hand)
+    return unless blackjack?(dealer_hand) do
       show_dealer_card
       show_player_hand
     end
