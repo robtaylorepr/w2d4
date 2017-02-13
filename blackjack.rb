@@ -112,7 +112,7 @@ class Game
 
   def play_again?
     response = prompt.select('Would you like to play again?', %w(Yes No))
-    (response == "Yes") ? Game.new.play_blackjack : (puts_game_totals)
+    response == 'Yes' ? Game.new.play_blackjack : puts_game_totals
   end
 
   def puts_game_totals
