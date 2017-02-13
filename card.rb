@@ -9,12 +9,11 @@ class Card
   end
 
   def self.face_cards
-    face_card_array = {
-                        "Jack"  => 10,
-                        "Queen" => 10,
-                        "King" => 10,
-                        "Ace" => 11
-                      }
+    {"Jack"  => 10,
+    "Queen" => 10,
+    "King" => 10,
+    "Ace" => 11
+    }
   end
 
   attr_accessor :face, :suit, :value
