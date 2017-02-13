@@ -44,7 +44,7 @@ class Game
   end
 
   def dealer_plays
-    perform_hit_action(dealer_hand) until end_dealer_turn    
+    perform_hit_action(dealer_hand) until end_dealer_turn
   end
 
   def play_blackjack
