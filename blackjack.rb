@@ -36,8 +36,8 @@ class Game
 
   def player_plays
     until end_player_turn
-      response = prompt.select("Would you like to hit or stay?", %w(hit stay))
-      if response == "hit"
+      response = prompt.select('Would you like to hit or stay?', %w(hit stay))
+      if response == 'hit'
         perform_hit_action(player_hand)
         show_player_hand
       else
@@ -51,7 +51,7 @@ class Game
       perform_hit_action(dealer_hand)
     end
   end
-  
+
   def play_blackjack
     deal_cards
     show_hands
