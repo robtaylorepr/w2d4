@@ -24,12 +24,16 @@ class Game
     @dealer_hand = []
   end
 
-  def play_blackjack
-    deal_cards
+  def show_hands
     if !blackjack?(dealer_hand)
       show_dealer_card
       show_player_hand
     end
+  end
+
+  def play_blackjack
+    deal_cards
+    show_hands
     until end_player_turn
       response = prompt.select("Would you like to hit or stay?", %w(hit stay))
       if response == "hit"
@@ -50,7 +54,7 @@ class Game
     hand << draw_card
     check_for_ace(hand) if bust?(hand)
   end
-  
+
   def deal_cards
     2.times do
       @player_hand << shoe.draw_card
