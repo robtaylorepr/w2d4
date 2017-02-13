@@ -37,12 +37,9 @@ class Game
   def player_plays
     until end_player_turn
       response = prompt.select('Would you like to hit or stay?', %w(hit stay))
-      if response == 'hit'
-        perform_hit_action(player_hand)
-        show_player_hand
-      else
-        break
-      end
+      break unless response == 'hit'
+      perform_hit_action(player_hand)
+      show_player_hand
     end
   end
 
