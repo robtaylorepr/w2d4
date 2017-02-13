@@ -120,11 +120,10 @@ class Game
   end
 
   def games_won
-    Game.winners_array.count { |entry| entry == "Player" }
+    Game.winners_array.count { |entry| entry == 'Player' }
   end
 
   def games_played
     Game.winners_array.length
   end
-
 end
