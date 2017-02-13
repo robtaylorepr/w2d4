@@ -2,6 +2,9 @@ require_relative 'shoe'
 require_relative 'game_logic'
 require 'tty'
 
+# Game class for Blackjack game_logic
+#  Description of function
+#  Description of other objects it uses
 class Game
   include GameLogic
 
