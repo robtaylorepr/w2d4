@@ -10,7 +10,7 @@ class Interface
 
   def new_game
     response = prompt.select("Would you like to play a game?", %w(Yes No))
-    (response == "Yes") ? Game.new : (puts "Goodbye.")
+    (response == "Yes") ? Game.new.play_blackjack : (puts "Goodbye.")
   end
 
 end

@@ -22,7 +22,6 @@ class Game
     @prompt = TTY::Prompt.new
     @player_hand = []
     @dealer_hand = []
-    play_blackjack
   end
 
   def play_blackjack
@@ -34,29 +33,24 @@ class Game
     until end_player_turn
       response = prompt.select("Would you like to hit or stay?", %w(hit stay))
       if response == "hit"
-        perform_player_action
+        perform_hit_action(player_hand)
+        show_player_hand
       else
         break
       end
     end
 
     until end_dealer_turn
-      perform_dealer_action
+      perform_hit_action(dealer_hand)
     end
     determine_winner
   end
 
-  def perform_player_action
-    @player_hand << draw_card
-    check_for_ace(player_hand) if bust?(player_hand)
-    show_player_hand
+  def perform_hit_action(hand)
+    hand << draw_card
+    check_for_ace(hand) if bust?(hand)
   end
-
-  def perform_dealer_action
-    @dealer_hand << draw_card
-    check_for_ace(dealer_hand) if bust?(dealer_hand)
-  end
-
+  
   def deal_cards
     2.times do
       @player_hand << shoe.draw_card
@@ -107,7 +101,7 @@ class Game
 
   def play_again?
     response = prompt.select("Would you like to play again?", %w(Yes No))
-    (response == "Yes") ? Game.new : (puts_game_totals)
+    (response == "Yes") ? Game.new.play_blackjack : (puts_game_totals)
   end
 
   def puts_game_totals
@@ -123,5 +117,3 @@ class Game
   end
 
 end
-
-# Game.new
