@@ -1,6 +1,8 @@
 require 'minitest/autorun'
 require_relative 'blackjack'
 
+#top level documentation goes here
+#and more here :-)
 class BlackjackTest < MiniTest::Test
 
   def setup
