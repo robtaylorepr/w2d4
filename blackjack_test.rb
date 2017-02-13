@@ -21,7 +21,7 @@ class BlackjackTest < MiniTest::Test
   end
 
   def test_perform_hit_action_changes_ace_value_when_bust
-    @game.player_hand = [Card.new("Ace", "Diamonds"), Card.new("9", "Diamonds")]
+    @game.player_hand = [Card.new('Ace', 'Diamonds'), Card.new('9', 'Diamonds')]
     assert_equal 11, @game.player_hand.first.value
     @game.perform_hit_action(@game.player_hand)
     assert_equal 1, @game.player_hand.first.value
